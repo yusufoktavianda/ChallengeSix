@@ -18,7 +18,7 @@ abstract class ApplicationDB() : RoomDatabase (){
                     INSTANCE = Room.databaseBuilder(
                         context.applicationContext,
                         ApplicationDB::class.java,
-                        "Cinema.db"
+                        "Cinema10.db"
                     ).build()
                 }
             }

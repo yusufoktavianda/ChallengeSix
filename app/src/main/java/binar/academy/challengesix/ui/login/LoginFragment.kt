@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import binar.academy.challengesix.databinding.FragmentLoginBinding
 import binar.academy.challengesix.ui.ViewModelFactory
+import com.bumptech.glide.Glide
 import org.w3c.dom.Text
 
 class LoginFragment : Fragment() {
@@ -31,7 +32,7 @@ class LoginFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val factory = ViewModelFactory(view.context)
         loginViewModel = ViewModelProvider(requireActivity(), factory)[LoginViewModel::class.java]
-
+        showImage()
         binding.loginButton.setOnClickListener {
 
             val email = binding.emailEditText.text.toString()
@@ -56,11 +57,21 @@ class LoginFragment : Fragment() {
                 findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToHomeFragment())
                 Log.d("Login", "Login Success $it")
                 loginViewModel.reset()
+
             }else{
                 Toast.makeText(requireActivity(), "Login Failed", Toast.LENGTH_SHORT).show()
                 Log.d("login", "testing ")
             }
         }
+    }
+
+
+    fun showImage(){
+        Glide
+            .with(requireContext())
+            .load("https://pbs.twimg.com/profile_images/1243623122089041920/gVZIvphd_400x400.jpg")
+            .centerCrop()
+            .into(binding.loginImageView)
     }
 
     override fun onDestroyView() {

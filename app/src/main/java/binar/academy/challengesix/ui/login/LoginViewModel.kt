@@ -38,6 +38,7 @@ class LoginViewModel(private val repository: UserRepository):ViewModel (){
                         loginvalidation.value = true
                         viewModelScope.launch {
                             repository.setUsername(usernameResult.toString())
+                            repository.setEmail(emailResult.toString())
                         }
                     }
                 } else{
@@ -46,11 +47,5 @@ class LoginViewModel(private val repository: UserRepository):ViewModel (){
             }
         }
     }
-//    fun showImage(){
-//        Glide
-//            .with(requireContext())
-//            .load("https://i.ibb.co/zJHYGBP/binarlogo.jpg")
-//            .centerCrop()
-//            .into(binding.loginImageView)
-//    }
+
 }

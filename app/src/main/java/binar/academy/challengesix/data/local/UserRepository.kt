@@ -37,20 +37,20 @@ class UserRepository(private val userDao: UserDao, private val context: Context)
         return userDao.authLogin(email,password)
     }
 
-//    suspend fun updateProfile(user: User, email: String): Int{
-//        return userDao.updateData(
-//            username = user.username,
-//            email = user.email,
-//            birthdate = user.birthDate,
-//            fullname = user.fullName,
-//            address = user.address,
-//            path = user.imgPath
-//        )
-//    }
+    suspend fun updateProfile(user: User, email: String): Int{
+        return userDao.updateData(
+            username = user.username,
+            email = email,
+            birthdate = user.birthDate,
+            fullname = user.fullName,
+            address = user.address,
+            path = user.imgPath
+        )
+    }
 
-//    suspend fun getAllData(username:String):User{
-//        return userDao.getAllData(username)
-//    }
+    suspend fun getAllData(username:String):User{
+        return userDao.getAllData(username)
+    }
 
    //preference datastore
 //    suspend fun getPhoto(username:String?):User{
@@ -68,17 +68,18 @@ class UserRepository(private val userDao: UserDao, private val context: Context)
             it[EMAIL_KEY] = email
         }
     }
+
     fun getUsernameValue(): Flow<String> {
         return context.prefDataStore.data.map {
             it[USERNAME_KEY]?:"default"
         }
     }
 
-//    fun getEmailValue():Flow<String>{
-//        return context.prefDataStore.data.map {
-//            it[EMAIL_KEY]?: "default"
-//        }
-//    }
+    fun getEmailValue():Flow<String>{
+        return context.prefDataStore.data.map {
+            it[EMAIL_KEY]?: "default"
+        }
+    }
 
 
     suspend fun clearDataStore(){
