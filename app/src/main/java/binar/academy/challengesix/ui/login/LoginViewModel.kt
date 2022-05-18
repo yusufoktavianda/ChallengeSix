@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import binar.academy.challengesix.data.local.UserRepository
+import com.bumptech.glide.Glide
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
@@ -45,4 +46,11 @@ class LoginViewModel(private val repository: UserRepository):ViewModel (){
             }
         }
     }
+//    fun showImage(){
+//        Glide
+//            .with(requireContext())
+//            .load("https://i.ibb.co/zJHYGBP/binarlogo.jpg")
+//            .centerCrop()
+//            .into(binding.loginImageView)
+//    }
 }

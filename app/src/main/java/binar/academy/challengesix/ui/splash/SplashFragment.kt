@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import binar.academy.challengesix.R
 import binar.academy.challengesix.databinding.FragmentLoginBinding
+import binar.academy.challengesix.databinding.FragmentRegisterBinding
 import binar.academy.challengesix.databinding.FragmentSplashBinding
 import binar.academy.challengesix.ui.ViewModelFactory
 
@@ -23,7 +24,8 @@ class SplashFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_splash, container, false)
+        _binding = FragmentSplashBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -45,5 +47,10 @@ class SplashFragment : Fragment() {
                 Log.d("splash", "testing berhasil $it")
             }
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

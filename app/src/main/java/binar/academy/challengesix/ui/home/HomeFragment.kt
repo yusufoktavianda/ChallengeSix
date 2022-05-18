@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import binar.academy.challengesix.MyApplication
 import binar.academy.challengesix.databinding.FragmentHomeBinding
@@ -30,6 +31,13 @@ class HomeFragment : Fragment() {
 //        val factory = HomeViewModelFactory(view.context)
 //        viewModel = ViewModelProvider(requireActivity(),factory)[]
         getAllMovie()
+        navigateProfile()
+    }
+
+    private fun navigateProfile() {
+        binding.personImageView.setOnClickListener {
+            findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToProfileFragment())
+        }
     }
 
     private fun getAllMovie() {

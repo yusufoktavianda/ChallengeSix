@@ -6,7 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 
 @Database(entities = [User::class], version = 1)
-abstract class ApplicationDB : RoomDatabase (){
+abstract class ApplicationDB() : RoomDatabase (){
     abstract fun userDao(): UserDao
 
     companion object {
@@ -18,7 +18,7 @@ abstract class ApplicationDB : RoomDatabase (){
                     INSTANCE = Room.databaseBuilder(
                         context.applicationContext,
                         ApplicationDB::class.java,
-                        "MovieCinema.db"
+                        "Cinema.db"
                     ).build()
                 }
             }

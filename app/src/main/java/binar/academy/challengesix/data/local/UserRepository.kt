@@ -22,6 +22,7 @@ class UserRepository(private val userDao: UserDao, private val context: Context)
              return instance
          }
      }
+
      private const val DATASTORE_NAME = "preferences"
      private val USERNAME_KEY         = stringPreferencesKey("username_key")
      private val EMAIL_KEY            = stringPreferencesKey("email_key")
@@ -80,10 +81,10 @@ class UserRepository(private val userDao: UserDao, private val context: Context)
 //    }
 
 
-//    suspend fun clearDataStore(){
-//        context.prefDataStore.edit {
-//            it.clear()
-//        }
-//    }
+    suspend fun clearDataStore(){
+        context.prefDataStore.edit {
+            it.clear()
+        }
+    }
 
 }
